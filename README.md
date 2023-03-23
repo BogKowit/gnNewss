@@ -17,10 +17,9 @@ Footer
 Powinien zawierać:
 
 # TODO Header
-1. nazwę naszej wspaniałej aplikacji, która będzie linkiem przekierowującym na główną stronę aplikacji
-2. przycisk umożliwiający zmianę widoku wyświetlanych newsów (możliwe opcje: lista, kafelki) - do przechowywania stanu wybranej opcji wykorzystaj redux'a
+<ok> 1. nazwę naszej wspaniałej aplikacji, która będzie linkiem przekierowującym na główną stronę aplikacji
+<ReduxAdd> 2. przycisk umożliwiający zmianę widoku wyświetlanych newsów (możliwe opcje: lista, kafelki) - do przechowywania stanu wybranej opcji wykorzystaj redux'a
 3. przycisk, po którego przyciśnięciu otworzy się popup. Niech treścią popupu będzie opis tego, co sprawiło Ci największą trudność w tym zadaniu oraz co sprawiło Ci największą frajdę.
-4. Powinno zawierać:
 
 # TODO Główny content
 1. listę Państw (nie muszą być wszystkie)

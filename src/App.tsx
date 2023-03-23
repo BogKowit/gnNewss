@@ -1,12 +1,21 @@
-import { Article } from "./components";
-import { fetchDataNews } from "./utils/fetchDataNews";
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider
+} from "react-router-dom";
+import { UseSwitchProvider } from "./components/context/ContextSwitch";
+import HomePage from "./pages/HomePage";
 
 function App() {
-  console.log(fetchDataNews())
+  const route = createBrowserRouter(
+    createRoutesFromElements(<Route path="/" element={<HomePage />} />)
+  );
+
   return (
-    <div >
-      <Article/>
-    </div>
+    <UseSwitchProvider>
+      <RouterProvider router={route}/>
+    </UseSwitchProvider>
   );
 }
 

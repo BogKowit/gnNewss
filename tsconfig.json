@@ -18,7 +18,8 @@
     "paths": {
       "@ui/*": ["/components/ui*"],
       "@components/*": ["/components/*"],
-      "@buttons": ["/components/buttons/*"]
+      "@buttons": ["/components/buttons/*"],
+      "@icons": ["/components/icons/*"]
     }
   },
   "include": ["src"]
