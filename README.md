@@ -7,11 +7,13 @@ https://newsapi.org/s/poland-news-api
 
 # Podział ekranu
 
+Menu boczne
+
 Header
 Menu boczne
 Główny content
 Footer
-Header
+
 Powinien zawierać:
 
 # TODO Header
