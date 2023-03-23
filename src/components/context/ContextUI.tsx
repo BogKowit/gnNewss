@@ -47,6 +47,7 @@ function uiReducer(state: StateValues, action: Action) {
 export const UIProvider: FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(uiReducer, initialState);
 
+  console.log(state)
   const openSidebar = () => dispatch({ type: "OPEN_SIDEBAR" });
   const closeSidebar = () => dispatch({ type: "CLOSE_SIDEBAR" });
 

@@ -1,19 +1,20 @@
-import React from "react";
 import { FC } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { UseUI } from "../../context/ContextUI";
 
 interface CardsProps {
   urlToImage: string;
   newTitle: string;
   name: string;
+  cardKey: string;
 }
 
-const Cards: FC<CardsProps> = ({ urlToImage, newTitle, name }) => {
-  const key = uuidv4()
+const Cards: FC<CardsProps> = ({ urlToImage, newTitle, name, cardKey }) => {
+  const { openSidebar, closeSidebar } = UseUI();
   return (
     <div
-      key={key}
-      className="w-72 h-40 flex flex-col justify-end text-white relative"
+      key={cardKey}
+      className="w-72 h-40 cursor-pointer flex flex-col justify-end text-white relative"
+      onClick={() => openSidebar()}
     >
       <img
         className="bg-black h-full w-full absolute -z-20"
@@ -25,7 +26,6 @@ const Cards: FC<CardsProps> = ({ urlToImage, newTitle, name }) => {
         <h1 className="font-bold">{newTitle}</h1>
         <p className="uppercase text-stone-400 text-sm">{name}</p>
       </div>
-      {key}
     </div>
   );
 };
