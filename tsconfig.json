@@ -19,7 +19,9 @@
       "@ui/*": ["/components/ui*"],
       "@components/*": ["/components/*"],
       "@buttons": ["/components/buttons/*"],
-      "@icons": ["/components/icons/*"]
+      "@icons": ["/components/icons/*"],
+      "@pages": ["/components/pages/*"],
+      "@functions": ["/components/functions/*"]
     }
   },
   "include": ["src"]

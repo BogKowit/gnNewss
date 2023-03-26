@@ -1,4 +1,3 @@
-
 const Logo = () => {
   return (
     <div className="flex uppercase items-center  justify-center  font-bold text-black space-x-1">

@@ -2,20 +2,31 @@ import {
   Route,
   createBrowserRouter,
   createRoutesFromElements,
-  RouterProvider
+  RouterProvider,
 } from "react-router-dom";
-import { UseSwitchProvider } from "./components/context/ContextSwitch";
-import HomePage from "./pages/HomePage";
+import MainLayout from "./layouts/MainLayout";
+import { InfoByCountries, HomePage, Country } from "./pages";
+
+const ErrorPage = () => {
+  return <div>Error 404</div>;
+};
 
 function App() {
-  const route = createBrowserRouter(
-    createRoutesFromElements(<Route path="/" element={<HomePage />} />)
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<MainLayout />} errorElement={<ErrorPage />}>
+        <Route path="/MainPage" index element={<HomePage />} />
+        <Route path="/country" element={<InfoByCountries />} />
+        <Route path="/country/:countryId" element={<Country />} />
+      </Route>
+    )
   );
 
+
   return (
-    <UseSwitchProvider>
-      <RouterProvider router={route}/>
-    </UseSwitchProvider>
+    <div>
+      <RouterProvider router={router} />
+    </div>
   );
 }
 

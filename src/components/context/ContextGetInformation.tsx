@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { fetchDataNews } from "../../utils/fetchDataNews";
+import { fetchDataNewsByCountry } from "../../utils/fetchDataNewsByCountry";
 
 type DataContextValue = {
   data: ArticleTypes[];
@@ -32,16 +32,24 @@ const useData = (): DataContextValue => {
 
 const DataProvider = ({
   children,
+  country,
 }: {
   children: React.ReactNode | React.ReactNode[];
+  country?: string;
 }) => {
   const [data, setData] = useState<ArticleTypes[]>([]);
 
   useEffect(() => {
     const fetchDAta = async () => {
-      const data = await fetchDataNews();
-      const { articles } = data;
-      setData(articles);
+      if (country) {
+        const data = await fetchDataNewsByCountry(country);
+        const { articles } = data;
+        setData(articles);
+      } else {
+        const data = await fetchDataNewsByCountry();
+        const { articles } = data;
+        setData(articles);
+      }
     };
     fetchDAta();
   }, []);

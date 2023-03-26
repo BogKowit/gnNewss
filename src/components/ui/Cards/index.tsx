@@ -1,15 +1,18 @@
-import { FC } from "react";
+import { formatDateTime, titleCutWords } from "../../../functions";
 import { UseUI } from "../../context/ContextUI";
 
-interface CardsProps {
-  urlToImage: string;
-  newTitle: string;
-  name: string;
+const Cards = ({
+  value,
+  cardKey,
+}: {
+  value: ArticleTypes;
   cardKey: string;
-}
+}) => {
+  const { openSidebar } = UseUI();
+  const { title, urlToImage, source, publishedAt } = value;
+  const { name } = source;
+  console.log(value);
 
-const Cards: FC<CardsProps> = ({ urlToImage, newTitle, name, cardKey }) => {
-  const { openSidebar, closeSidebar } = UseUI();
   return (
     <div
       key={cardKey}
@@ -22,12 +25,32 @@ const Cards: FC<CardsProps> = ({ urlToImage, newTitle, name, cardKey }) => {
         alt="informationPicture"
       />
       <div className="absolute -z-10 w-full h-full bg-gradient-to-t from-black/50 to to-white/10 " />
-      <div className="m-2">
-        <h1 className="font-bold">{newTitle}</h1>
-        <p className="uppercase text-stone-400 text-sm">{name}</p>
+      <div className="p-2 bg-white/10">
+        <h1 className="font-bold">{titleCutWords(title, 8)}</h1>
+        <div>
+          <p className="uppercase text-stone-400 text-sm">{name}</p>
+          <p className="uppercase text-stone-400 text-sm">
+            {formatDateTime(publishedAt)}
+          </p>
+        </div>
       </div>
     </div>
   );
 };
 
 export default Cards;
+
+type ArticleTypes = {
+  author: string;
+  title: string;
+  description: string;
+  url: string;
+  source: Source;
+  urlToImage: string;
+  publishedAt: string;
+};
+
+type Source = {
+  id: string;
+  name: string;
+};

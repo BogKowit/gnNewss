@@ -24,16 +24,16 @@ Powinien zawierać:
 
 # TODO Główny content
 
-1. listę Państw (nie muszą być wszystkie)
-2. flagę danego kraju przed jego nazwą 😉
-3. Kliknięcie na dane Państwo powinno przekierować użytkownika na stronę z newsami dla danego państwa.
+<ok>. listę Państw (nie muszą być wszystkie)
+<ok>. flagę danego kraju przed jego nazwą 😉
+<ok?język_państwa>3. Kliknięcie na dane Państwo powinno przekierować użytkownika na stronę z newsami dla danego państwa.
    1. Niech struktura urla będzie następująca: /country/[kraj]
 
 # TODO Główny content
 
 1. Powinien zawierać newsy w postaci listy bądź kafelek (w zależności od wybranej opcji w headerze).
-2. Lista powinna zawierać takie pozycje jak: tytuł, nazwa źródła oraz data publikacji
-3. Kafelki powinny zawierać dodatkowo miniaturkę (jeżeli występuje) oraz zajawkę.
+<ok>2. Lista powinna zawierać takie pozycje jak: tytuł, nazwa źródła oraz data publikacji
+<zajawka>3. Kafelki powinny zawierać dodatkowo miniaturkę (jeżeli występuje) oraz zajawkę.
 4. Kliknięcie na danego newsa powinno otworzyć popupa z jego treścią, a także autorem oraz urlem do strony, skąd dany news został pobrany.
 
 # TODO Footer
