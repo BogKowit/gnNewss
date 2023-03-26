@@ -1,19 +1,20 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { useSwitch } from "../context/ContextSwitch";
 import Logo from "./Logo";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../redux/store";
+import { switchCard } from "../../redux/switchReducer";
 
 const Header = () => {
-  const { switchCard } = useSwitch();
   const { t, i18n } = useTranslation();
-
   useEffect(() => {
     const lng = navigator.language;
     i18n.changeLanguage(lng);
   }, []);
 
-
+  const dispatch = useDispatch();
+  const switcher = useSelector((state: RootState) => state.switch);
 
   return (
     <div>
@@ -22,7 +23,13 @@ const Header = () => {
           <Link to="/">
             <Logo />
           </Link>
-          {/* <button onClick={switchCard}>Click Me</button> */}
+          <button
+            onClick={() => {
+              dispatch(switchCard());
+            }}
+          >
+            Click Me
+          </button>
           <ul className="flex  space-x-4">
             <li></li>
             <Link to="/MainPage">

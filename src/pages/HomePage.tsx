@@ -1,16 +1,13 @@
-import { Article, PopUp } from "../components";
-import { DataProvider } from "../components/context/ContextGetInformation";
+import { NewsComponent, PopUp } from "../components";
 import { DisabledBody } from "../components/ui";
 
 const HomePage = () => {
   return (
     <>
-      <DataProvider>
-        <Article />
-        <DisabledBody>
-          <PopUp />
-        </DisabledBody>
-      </DataProvider>
+      <NewsComponent />
+      <DisabledBody>
+        <PopUp />
+      </DisabledBody>
     </>
   );
 };

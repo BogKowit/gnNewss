@@ -4,8 +4,9 @@ import {
   createRoutesFromElements,
   RouterProvider,
 } from "react-router-dom";
+import { NewsComponent } from "./components";
 import MainLayout from "./layouts/MainLayout";
-import { InfoByCountries, HomePage, Country } from "./pages";
+import { InfoByCountries, HomePage } from "./pages";
 
 const ErrorPage = () => {
   return <div>Error 404</div>;
@@ -17,11 +18,13 @@ function App() {
       <Route path="/" element={<MainLayout />} errorElement={<ErrorPage />}>
         <Route path="/MainPage" index element={<HomePage />} />
         <Route path="/country" element={<InfoByCountries />} />
-        <Route path="/country/:countryId" element={<Country />} />
+        <Route
+          path="/country/:countryId"
+          element={<NewsComponent  />}
+        />
       </Route>
     )
   );
-
 
   return (
     <div>

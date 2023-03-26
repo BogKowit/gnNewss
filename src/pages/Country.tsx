@@ -1,17 +1,9 @@
-import { useLocation } from "react-router-dom";
-import { Article } from "../components";
-import { DataProvider } from "../components/context/ContextGetInformation";
+import { NewsComponent } from "../components";
 
 const Country = () => {
-  let { state } = useLocation();
-
-
-
   return (
     <div>
-      <DataProvider country={state}>
-        <Article />
-      </DataProvider>
+      <NewsComponent />
     </div>
   );
 };

@@ -12,7 +12,6 @@ const Countries = ({ countries }: any) => {
     setNewDataByCountry(dataArticles);
   };
 
-  console.log(newDataByCountry);
   return (
     <div className="flex flex-wrap gap-2 items-center justify-center">
       {countries &&

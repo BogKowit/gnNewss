@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RootState } from './RootState';
+import { RootState } from './store';
 
 // interface StateModifiers {
 //   openSidebar: () => void;
