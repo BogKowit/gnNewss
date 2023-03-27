@@ -1,11 +1,5 @@
 import iso from "iso-3166-1";
 
-interface props {
-  country: string;
-  alpha2: string;
-  alpha3: string;
-  numeric: string;
-}
 
 export default function divideStringIntoPairs(str: string) {
   const pairs = [];
