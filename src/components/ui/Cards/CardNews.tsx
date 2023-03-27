@@ -24,14 +24,12 @@ const CardNews: FC<Props> = ({
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log(title, isOpen);
 
   return (
     <>
       <div
         onClick={() => {
           dispatch(openSidebar());
-          console.log(cardKey);
           setIsOpen(true);
         }}
         key={cardKey}

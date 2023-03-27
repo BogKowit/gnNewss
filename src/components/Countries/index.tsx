@@ -13,9 +13,9 @@ const Countries = ({ countries }: { countries: props[] }) => (
   <div className="flex flex-col gap-2 w-full ">
     {countries?.map((value: props, index: number) => {
       return (
-        <Link to={`/country/${value.country}`} state={value.alpha2}>
+        <Link key={index} to={`/country/${value.country}`} state={value.alpha2}>
           <CardCountry
-            index={index}
+            index={index+1}
             country={value.alpha2}
             title={titleCutWords(value.country, 3)}
           />
