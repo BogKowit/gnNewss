@@ -1,20 +1,18 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { DataTypes } from "../types";
 
-// Typy stanu
 export type NewsState = {
-  data: Array<any>;
+  data: Array<DataTypes>;
   loading: boolean;
   error: string | null;
 };
 
-// Stan początkowy
 const initialState: NewsState = {
   data: [],
   loading: false,
   error: null,
 };
 
-// Definicja slice'a
 const newsSlice = createSlice({
   name: "news",
   initialState,
@@ -37,6 +35,5 @@ const newsSlice = createSlice({
   },
 });
 
-// Eksport reducer'a oraz akcji
 export const { setNewsData, setNewsError, setNewsLoading } = newsSlice.actions;
 export default newsSlice.reducer;

@@ -16,12 +16,13 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "@ui/*": ["/components/ui*"],
       "@components/*": ["/components/*"],
+      "@ui/*": ["/components/ui*"],
       "@buttons": ["/components/buttons/*"],
-      "@icons": ["/components/icons/*"],
       "@pages": ["/components/pages/*"],
-      "@functions": ["/components/functions/*"]
+      "@functions": ["/components/functions/*"],
+      "@layout": ["/components/layout/*"],
+      "@utils": ["/utils/index.ts"]
     }
   },
   "include": ["src"]

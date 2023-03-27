@@ -4,15 +4,20 @@ import {
   enableBodyScroll,
   clearAllBodyScrollLocks,
 } from "body-scroll-lock";
-import { UseUI } from "../../context/ContextUI";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
+import { closeSidebar } from "../../../redux/uiReducer";
+import { ReactNode } from "react";
 
 interface Props {
-  children: any;
+  children: ReactNode;
 }
 
-const BlurLock: FC<Props> = ({ children }) => {
+const BlurLock: FC<Props> = ({ children}) => {
   const ref = useRef() as React.MutableRefObject<HTMLDivElement>;
-  const { isSidebarOpen, closeSidebar } = UseUI();
+  const dispatch = useDispatch();
+  const ui = useSelector((state: RootState) => state.ui);
+  const { isSidebarOpen } = ui;
 
   useEffect(() => {
     if (ref.current) {
@@ -27,23 +32,26 @@ const BlurLock: FC<Props> = ({ children }) => {
     };
   }, [isSidebarOpen]);
 
+  const handleClose = () => {
+    dispatch(closeSidebar());
+  };
   return (
     <>
       {isSidebarOpen ? (
         <div
           ref={ref}
-          className="fixed inset-0 z-50 overflow-hidden"
-          onClick={closeSidebar}
+          className="  fixed inset-0 z-50 overflow-hidden cursor-pointer flex justify-center items-center"
         >
-          <div className="absolute inset-0 flex justify-center overflow-hidden">
-            <div className="absolute inset-0 bg-black bg-opacity-75 transition-opacity" />
-            <div className="absolute inset-0 bg-black bg-opacity-75 transition-opacity" />
-
-            <div className="flex items-center justify-center"></div>
-            <section className="items-top absolute inset-y-0 mt-20 flex outline-none">
-              <div className="">{children}</div>
-            </section>
-          </div>
+          <div
+            className="absolute inset-0 h-screen w-screen bg-black bg-opacity-75 z-30 transition-opacity cursor-pointer"
+            onClick={handleClose}
+          />
+          <section
+            className=" absolute z-50 flex items-center justify-center
+             outline-none  cursor-auto "
+          >
+            {children}
+          </section>
         </div>
       ) : null}
     </>

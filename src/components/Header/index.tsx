@@ -1,47 +1,44 @@
-import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import Logo from "./Logo";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { openSidebar, switchCard } from "../../redux/uiReducer";
 import { RootState } from "../../redux/store";
-import { switchCard } from "../../redux/switchReducer";
+import { Logo } from "../ui";
+import BlurLock from "../ui/DisabledBody";
+import PopUp from "../PopUp";
 
 const Header = () => {
-  const { t, i18n } = useTranslation();
-  useEffect(() => {
-    const lng = navigator.language;
-    i18n.changeLanguage(lng);
-  }, []);
-
   const dispatch = useDispatch();
-  const switcher = useSelector((state: RootState) => state.switch);
-
+  const news = useSelector((state: RootState) => state.ui.isCard);
   return (
-    <div>
-      <div>
-        <div className="bg-black text-white flex justify-between h-14 items-center px-4">
-          <Link to="/">
-            <Logo />
-          </Link>
-          <button
-            onClick={() => {
-              dispatch(switchCard());
-            }}
-          >
-            Click Me
-          </button>
-          <ul className="flex  space-x-4">
-            <li></li>
-            <Link to="/MainPage">
-              <li>{t("Home")}</li>
-            </Link>
-            <Link to="/country">
-              <li>{t("Countries")}</li>
-            </Link>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <nav className="bg-black text-white flex justify-between h-14 items-center px-4">
+      <Link to="/">
+        <Logo />
+      </Link>
+      <button
+        onClick={() => {
+          dispatch(openSidebar());
+        }}
+        className="bg-white focus:bg-gray-200 hover:bg-gray-200 flex font-semibold px-4 py-1 rounded-xl border w-auto items-center justify-center  text-black"
+      >
+        informacje
+      </button>
+      <BlurLock>
+        <PopUp />
+      </BlurLock>
+      <button
+        onClick={() => {
+          dispatch(switchCard());
+        }}
+        className="bg-white flex focus:bg-gray-200 hover:bg-gray-200 font-semibold px-4 py-1 rounded-xl border w-56 items-center justify-center  text-black"
+      >
+        Zmień widok:{" "}
+        {news === true ? (
+          <p className=" decoration-pink-400 underline pl-1">lista</p>
+        ) : (
+          <p className=" decoration-pink-400 underline pl-1">kafelki</p>
+        )}
+      </button>
+    </nav>
   );
 };
 

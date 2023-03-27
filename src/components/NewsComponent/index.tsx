@@ -6,10 +6,10 @@ import {
   setNewsLoading,
 } from "../../redux/newsReducer";
 import { v4 as uuidv4 } from "uuid";
-import { Cards } from "../ui";
 import { RootState } from "../../redux/store";
-import { fetchDataNewsByCountry } from "../../utils/fetchDataNewsByCountry";
 import { useLocation } from "react-router-dom";
+import { fetchDataNewsByCountry } from "../../utils";
+import CardPicker from "../CardPicker";
 
 const NewsComponent = () => {
   const news = useSelector((state: RootState) => state.news);
@@ -17,7 +17,7 @@ const NewsComponent = () => {
 
   const location = useLocation();
   const { state } = location;
-  const country = state
+  const country = state || "us";
 
   const memoizedFetchData = useMemo(() => {
     return async () => {
@@ -25,12 +25,11 @@ const NewsComponent = () => {
         dispatch(setNewsLoading());
         const data = await fetchDataNewsByCountry(country);
         dispatch(setNewsData(data.articles));
-      } catch (error) {
-        // @ts-ignore
-        dispatch(setNewsError(error.message));
+      } catch (error: any) {
+        dispatch(setNewsError(error));
       }
     };
-  }, [dispatch]);
+  }, [country, dispatch]);
 
   useEffect(() => {
     memoizedFetchData();
@@ -45,9 +44,9 @@ const NewsComponent = () => {
   }
 
   return (
-    <div>
+    <div className="flex flex-wrap justify-center">
       {news.data.map((article) => (
-        <Cards value={article} key={uuidv4()} cardKey={uuidv4()} />
+        <CardPicker value={article} key={uuidv4()} cardKey={uuidv4()} />
       ))}
     </div>
   );

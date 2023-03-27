@@ -1,9 +1,26 @@
-import React from 'react'
+import { useState, useEffect } from "react";
+import { divideStringIntoPairs } from "../../functions";
+import Countries from "../Countries";
 
-const Sidebar = () => {
-  return (
-    <div>Sidebar</div>
-  )
+interface props {
+  country: string;
+  alpha2: string;
+  alpha3: string;
+  numeric: string;
 }
 
-export default Sidebar
+const Sidebar = () => {
+  const [countries, setCountries] = useState<props[]>();
+
+  const countriesListFromApi =
+    "aearataubebgbrcachcncocuczdeegfrgbgrhkhuidieilinitjpkrltlvmamxmyngnlnonzphplptrorsrusasesgsiskthtrtwuausveza";
+
+  useEffect(() => {
+    const countriesToDivide = divideStringIntoPairs(countriesListFromApi);
+    setCountries(countriesToDivide);
+  }, []);
+
+  return <>{countries ? <Countries countries={countries} /> : null}</>;
+};
+
+export default Sidebar;

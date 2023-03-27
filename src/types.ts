@@ -21,3 +21,4 @@ export type FetchDataAction = {
   type: string;
   payload: DataTypes[];
 };
+
