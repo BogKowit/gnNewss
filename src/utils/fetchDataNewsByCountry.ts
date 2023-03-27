@@ -19,10 +19,10 @@ const fetchDataNewsByCountry = async (country: string) => {
   try {
     const res = await fetch(`/.netlify/functions/fetchNews?country=${country}`);
     const data = await res.json();
-    console.log(data);
+    console.log("data:",data);
     return data;
   } catch (error) {
-    console.error(error);
+    console.log("error",error);
   }
 };
 
