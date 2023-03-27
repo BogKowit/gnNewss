@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { useDispatch } from "react-redux";
 import { openSidebar } from "../../../redux/uiReducer";
-import PopUpTest from "../../PopUp/PopUpTest";
+import PopUpTest from "../../PopUp/PopUpInformation";
 import BlurLock from "../DisabledBody";
 
 interface Props {

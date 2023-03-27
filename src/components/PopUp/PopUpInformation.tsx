@@ -6,7 +6,7 @@ interface Props {
   value?: any;
 }
 
-const PopUpTest: FC<Props> = ({ value }) => {
+const PopUpInformation: FC<Props> = ({ value }) => {
   const dispatch = useDispatch();
 
   return (
@@ -44,4 +44,4 @@ const PopUpTest: FC<Props> = ({ value }) => {
   );
 };
 
-export default PopUpTest;
+export default PopUpInformation;

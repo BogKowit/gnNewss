@@ -31,7 +31,6 @@ const CardPicker = ({
   return (
     <ListNews
       cardKey={cardKey}
-      urlToImage={urlToImage}
       title={titleCutWords(title, 8)}
       name={name}
       datePublished={formatDateTime(publishedAt)}

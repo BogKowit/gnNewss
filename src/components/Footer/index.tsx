@@ -7,7 +7,9 @@ const Footer = () => {
 
   return (
     <div className="w-full bg-black h-12 text-white flex  items-center justify-between px-4 space-x-2">
-      <p>Liczba artukułów na stronie: {information.length}</p>
+      <p>
+        Liczba artukułów na stronie: {information ? information?.length : 0}
+      </p>
       <Timer />
     </div>
   );

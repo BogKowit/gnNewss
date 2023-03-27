@@ -12,6 +12,7 @@ interface props {
 const Sidebar = () => {
   const [countries, setCountries] = useState<props[]>();
 
+  // Leagues from api
   const countriesListFromApi =
     "aearataubebgbrcachcncocuczdeegfrgbgrhkhuidieilinitjpkrltlvmamxmyngnlnonzphplptrorsrusasesgsiskthtrtwuausveza";
 

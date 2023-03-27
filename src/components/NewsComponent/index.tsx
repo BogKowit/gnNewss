@@ -45,7 +45,7 @@ const NewsComponent = () => {
 
   return (
     <div className="flex flex-wrap justify-center">
-      {news.data.map((article) => (
+      {news?.data.map((article) => (
         <CardPicker value={article} key={uuidv4()} cardKey={uuidv4()} />
       ))}
     </div>

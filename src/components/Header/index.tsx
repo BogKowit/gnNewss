@@ -4,16 +4,19 @@ import { openSidebar, switchCard } from "../../redux/uiReducer";
 import { RootState } from "../../redux/store";
 import { Logo } from "../ui";
 import BlurLock from "../ui/DisabledBody";
-import PopUp from "../PopUp";
+import PopUp from "../PopUp/PopUpHeader";
 
 const Header = () => {
   const dispatch = useDispatch();
   const news = useSelector((state: RootState) => state.ui.isCard);
+
   return (
     <nav className="bg-black text-white flex justify-between h-14 items-center px-4">
       <Link to="/">
         <Logo />
       </Link>
+
+      {/* Button-Popup */}
       <button
         onClick={() => {
           dispatch(openSidebar());
@@ -25,6 +28,9 @@ const Header = () => {
       <BlurLock>
         <PopUp />
       </BlurLock>
+
+      {/* Button-Switcher */}
+
       <button
         onClick={() => {
           dispatch(switchCard());
