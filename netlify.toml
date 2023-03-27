@@ -6,7 +6,7 @@
   "/*" = { Access-Control-Allow-Origin = "*", Access-Control-Allow-Headers = "Origin, X-Requested-With, Content-Type, Accept", Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS" }
 
 [[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
+  from = "/*"
+  to = "/src/utils/fetchDataNewsByCountry.ts"
   status = 200
   force = true
