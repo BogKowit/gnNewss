@@ -1,8 +1,13 @@
-export { default as Footer } from "./Footer";
-export { default as Header } from "./Header";
-export { default as Sidebar } from "./Sidebar";
-export { default as NewsComponent } from "./NewsComponent";
-export { default as PopUpInformation } from "./PopUp/PopUpInformation";
-export { default as PopUpHeader} from "./PopUp/PopUpHeader"
-export { default as Countries } from "./Countries"
-export { default as CardPicker } from "./CardPicker"
+export { default as Footer } from "./Common/Footer";
+export { default as Header } from "./Common/Header";
+export { default as HeaderSwitcher } from "./HeaderSwitcher";
+export { default as Sidebar } from "./Common/Sidebar";
+export { default as PopUpInformation } from "./PopUps/PopUpInformation";
+export { default as PopUpHeader } from "./PopUps/PopUpHeader";
+export { default as Countries } from "./Countries";
+export { default as CardPicker } from "./CardSwitcher";
+export { default as Timer } from "./Timer";
+export { default as NewsComponent } from "./Common/MainComponent";
+export { default as PopUpButtonOpen } from "./Buttons/PopUpButtonOpen";
+export { default as PopUpButtonClose } from "./Buttons/PopUpButtonClose";
+export { default as ActualCountry } from "./ActualCountry";

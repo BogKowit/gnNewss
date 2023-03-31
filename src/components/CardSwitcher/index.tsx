@@ -1,16 +1,10 @@
 import { formatDateTime, titleCutWords } from "../../functions";
-import { DataTypes } from "../../types";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import { CardNews, ListNews } from "../ui";
+import { DataTypes } from "../../types";
+import { CardNews, ListNews } from "components/ui";
 
-const CardPicker = ({
-  value,
-  cardKey,
-}: {
-  value: DataTypes;
-  cardKey: string;
-}) => {
+const CardSwitcher = ({ value }: { value: DataTypes }) => {
   const switcher = useSelector((state: RootState) => state.ui);
   const { isCard } = switcher;
   const { title, urlToImage, source, publishedAt } = value;
@@ -19,18 +13,15 @@ const CardPicker = ({
   if (isCard === true) {
     return (
       <CardNews
-        cardKey={cardKey}
         urlToImage={urlToImage}
         title={titleCutWords(title, 8)}
         name={name}
         datePublished={formatDateTime(publishedAt)}
-        value={value}
       />
     );
   }
   return (
     <ListNews
-      cardKey={cardKey}
       title={titleCutWords(title, 8)}
       name={name}
       datePublished={formatDateTime(publishedAt)}
@@ -38,4 +29,4 @@ const CardPicker = ({
   );
 };
 
-export default CardPicker;
+export default CardSwitcher;

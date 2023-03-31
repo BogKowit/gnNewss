@@ -1,11 +1,11 @@
+import { NewsComponent } from "components";
+import { MainLayout } from "layouts";
 import {
   Route,
   createBrowserRouter,
   createRoutesFromElements,
   RouterProvider,
 } from "react-router-dom";
-import { NewsComponent } from "./components";
-import { MainLayout } from "./layouts";
 
 const ErrorPage = () => <div>Error 404</div>;
 

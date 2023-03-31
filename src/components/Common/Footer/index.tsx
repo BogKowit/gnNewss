@@ -1,12 +1,12 @@
-import Timer from "./Timer";
 import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
+import { RootState } from "../../../redux/store";
+import { Timer } from "components";
 
 const Footer = () => {
   const information = useSelector((state: RootState) => state.news.data);
 
   return (
-    <div className="w-full bg-black h-12 text-white flex  items-center justify-between px-4 space-x-2">
+    <div className="footerWrapper">
       <p>
         Liczba artukułów na stronie: {information ? information?.length : 0}
       </p>

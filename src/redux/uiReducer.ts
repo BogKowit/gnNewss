@@ -2,12 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "./store";
 
 interface StateValues {
-  isSidebarOpen: boolean;
+  isOpenPopUp: boolean;
+  isOpenPopUpAboutMe: boolean;
   isCard: boolean;
 }
 
 const initialState: StateValues = {
-  isSidebarOpen: false,
+  isOpenPopUp: false,
+  isOpenPopUpAboutMe: false,
   isCard: false,
 };
 
@@ -15,11 +17,15 @@ export const uiSlice = createSlice({
   name: "ui",
   initialState,
   reducers: {
-    openSidebar: (state) => {
-      state.isSidebarOpen = true;
+    openPopUp: (state) => {
+      state.isOpenPopUp = true;
     },
-    closeSidebar: (state) => {
-      state.isSidebarOpen = false;
+    openPopUpAboutMe: (state) => {
+      state.isOpenPopUpAboutMe = true;
+    },
+    closePopUps: (state) => {
+      state.isOpenPopUpAboutMe = false;
+      state.isOpenPopUp = false;
     },
     switchCard: (state) => {
       state.isCard = !state.isCard;
@@ -27,7 +33,12 @@ export const uiSlice = createSlice({
   },
 });
 
-export const { openSidebar, closeSidebar, switchCard } = uiSlice.actions;
+export const {
+  openPopUp,
+  switchCard,
+  closePopUps,
+  openPopUpAboutMe,
+} = uiSlice.actions;
 
 export const selectUIState = (state: RootState) => state.ui;
 

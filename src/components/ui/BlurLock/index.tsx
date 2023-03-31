@@ -6,22 +6,22 @@ import {
 } from "body-scroll-lock";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
-import { closeSidebar } from "../../../redux/uiReducer";
+import { closePopUps } from "../../../redux/uiReducer";
 import { ReactNode } from "react";
 
 interface Props {
-  children: ReactNode;
+  children: ReactNode | ReactNode[];
 }
 
-const BlurLock: FC<Props> = ({ children}) => {
+const BlurLock: FC<Props> = ({ children }) => {
   const ref = useRef() as React.MutableRefObject<HTMLDivElement>;
   const dispatch = useDispatch();
   const ui = useSelector((state: RootState) => state.ui);
-  const { isSidebarOpen } = ui;
+  const {  isOpenPopUp, isOpenPopUpAboutMe } = ui;
 
   useEffect(() => {
     if (ref.current) {
-      if (isSidebarOpen) {
+      if (isOpenPopUpAboutMe || isOpenPopUp) {
         disableBodyScroll(ref.current);
       } else {
         enableBodyScroll(ref.current);
@@ -30,25 +30,23 @@ const BlurLock: FC<Props> = ({ children}) => {
     return () => {
       clearAllBodyScrollLocks();
     };
-  }, [isSidebarOpen]);
+  }, [isOpenPopUpAboutMe , isOpenPopUp]);
 
-  const handleClose = () => {
-    dispatch(closeSidebar());
-  };
   return (
     <>
-      {isSidebarOpen ? (
+      {isOpenPopUpAboutMe || isOpenPopUp ? (
         <div
           ref={ref}
-          className="  fixed inset-0 z-50 overflow-hidden cursor-pointer flex justify-center items-center"
+          className="blurWrapper"
         >
           <div
-            className="absolute inset-0 h-screen w-screen bg-black bg-opacity-75 z-30 transition-opacity cursor-pointer"
-            onClick={handleClose}
+            className="blurCloser"
+            onClick={() => {
+              dispatch(closePopUps());
+            }}
           />
           <section
-            className=" absolute z-50 flex items-center justify-center
-             outline-none  cursor-auto "
+            className="blurSection"
           >
             {children}
           </section>

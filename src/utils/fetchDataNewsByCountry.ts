@@ -7,7 +7,6 @@ const fetchDataNewsByCountry = async (country: string) => {
   try {
     const res = await fetch(API_URL);
     const data = await res.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.error(error);
